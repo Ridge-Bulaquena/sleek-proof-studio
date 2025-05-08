@@ -17,20 +17,20 @@ export const CTASection: React.FC = () => {
               Ready to Streamline Your Approval Process?
             </h2>
             
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-xl font-sans text-muted-foreground mb-8">
               Join thousands of businesses saving time and reducing errors with SimplerProofs.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="rounded-full text-lg px-8" asChild>
+              <Button size="lg" className="rounded-full text-lg px-8 font-sans" asChild>
                 <Link to="/signup">Start Free Trial</Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full text-lg px-8" asChild>
+              <Button size="lg" variant="outline" className="rounded-full text-lg px-8 font-sans" asChild>
                 <Link to="/demo">Schedule Demo</Link>
               </Button>
             </div>
             
-            <p className="mt-6 text-sm text-muted-foreground">
+            <p className="mt-6 text-sm font-sans text-muted-foreground">
               No credit card required. Free for 14 days.
             </p>
           </div>

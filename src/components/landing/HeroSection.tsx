@@ -16,21 +16,21 @@ export const HeroSection: React.FC = () => {
             The Easiest Way to Approve Custom Orders
           </h1>
           
-          <p className="text-xl text-muted-foreground mb-8">
+          <p className="text-xl font-sans text-muted-foreground mb-8">
             Upload. Approve. Produce.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="rounded-full text-lg px-8" asChild>
+            <Button size="lg" className="rounded-full text-lg px-8 font-sans" asChild>
               <Link to="/signup">Get Started</Link>
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full text-lg px-8" asChild>
+            <Button size="lg" variant="outline" className="rounded-full text-lg px-8 font-sans" asChild>
               <Link to="/demo">See Demo</Link>
             </Button>
           </div>
           
           <div className="mt-12 bg-muted p-4 rounded-xl inline-block">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground font-sans">
               Trusted by <span className="font-semibold text-foreground">2,500+</span> custom product sellers
             </p>
           </div>

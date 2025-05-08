@@ -21,7 +21,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ title }) => {
             <input
               type="search"
               placeholder="Search..."
-              className="bg-muted/80 backdrop-blur-sm pl-10 pr-4 py-2 rounded-xl text-sm w-64 focus:outline-none focus:ring-1 focus:ring-primary focus:bg-muted"
+              className="font-sans bg-muted/80 backdrop-blur-sm pl-10 pr-4 py-2 rounded-xl text-sm w-64 focus:outline-none focus:ring-1 focus:ring-primary focus:bg-muted"
             />
           </div>
           
@@ -32,7 +32,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ title }) => {
           
           <ThemeToggle />
           
-          <Button size="sm" className="gap-2 hidden md:flex bg-fluorescent-purple text-white hover:bg-fluorescent-purple/90 rounded-xl">
+          <Button size="sm" className="gap-2 hidden md:flex bg-fluorescent-purple text-white hover:bg-fluorescent-purple/90 rounded-xl font-sans">
             <Plus size={16} />
             <span>New Proof</span>
           </Button>

@@ -21,7 +21,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`glass-card p-6 transition-all hover:translate-y-[-2px] hover:shadow-neon ${className}`}>
+    <div className={`sleek-card p-6 transition-all hover:translate-y-[-2px] ${className}`}>
       <div className="flex justify-between items-start">
         <div>
           <p className="text-sm text-muted-foreground">{title}</p>

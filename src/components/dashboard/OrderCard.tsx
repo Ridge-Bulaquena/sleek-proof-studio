@@ -45,7 +45,7 @@ export const OrderCard: React.FC<OrderCardProps> = ({
 }) => {
   return (
     <div 
-      className="glass-card overflow-hidden cursor-pointer transition-all duration-300 hover:translate-y-[-4px] group"
+      className="sleek-card overflow-hidden cursor-pointer transition-all duration-300 hover:translate-y-[-4px] group"
       onClick={onClick}
     >
       <div className="aspect-video relative overflow-hidden bg-muted/80">

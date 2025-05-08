@@ -107,7 +107,8 @@
   }
   
   .glass-card {
-    @apply bg-white/70 dark:bg-card/70 backdrop-blur-lg shadow-glass border border-white/20 dark:border-white/5 rounded-2xl transition-all duration-300 hover:shadow-glass-sm;
+    @apply bg-white/90 dark:bg-card/90 backdrop-blur-lg border border-white/20 dark:border-white/5 rounded-2xl transition-all duration-300 hover:shadow-sm;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
   }
   
   .neumorphic {
@@ -144,5 +145,14 @@
 
   .fluorescent-pink::after {
     @apply shadow-neon-pink;
+  }
+
+  .sleek-card {
+    @apply bg-white dark:bg-card/95 rounded-2xl border-none transition-all duration-300;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+  }
+  
+  .sleek-card:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06), 0 3px 10px rgba(0, 0, 0, 0.03);
   }
 }

@@ -16,10 +16,10 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', mono = false, className
   
   return (
     <div className={`font-heading font-bold flex items-center gap-2 ${sizeClasses[size]} ${className}`}>
-      <div className={`rounded-lg w-8 h-8 flex items-center justify-center ${mono ? 'bg-foreground' : 'bg-primary'} text-white`}>
+      <div className={`rounded-xl w-8 h-8 flex items-center justify-center ${mono ? 'bg-foreground' : 'bg-fluorescent-purple'} text-white`}>
         SP
       </div>
-      <span>Simpler<span className="font-extrabold">Proofs</span></span>
+      <span>Simpler<span className="font-extrabold text-fluorescent-purple dark:text-fluorescent-purple">Proofs</span></span>
     </div>
   );
 };

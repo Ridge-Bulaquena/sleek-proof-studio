@@ -7,13 +7,15 @@ export const DashboardLayout = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden bg-background">
       <DashboardSidebar 
         collapsed={sidebarCollapsed} 
         onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} 
       />
       <main className="flex-1 overflow-y-auto">
-        <Outlet />
+        <div className="flex flex-col min-h-screen">
+          <Outlet />
+        </div>
       </main>
     </div>
   );

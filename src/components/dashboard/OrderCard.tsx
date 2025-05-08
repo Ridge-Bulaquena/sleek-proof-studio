@@ -45,19 +45,19 @@ export const OrderCard: React.FC<OrderCardProps> = ({
 }) => {
   return (
     <div 
-      className="glass-card overflow-hidden cursor-pointer"
+      className="glass-card overflow-hidden cursor-pointer transition-all duration-300 hover:translate-y-[-4px] group"
       onClick={onClick}
     >
-      <div className="aspect-video relative overflow-hidden bg-muted">
+      <div className="aspect-video relative overflow-hidden bg-muted/80">
         <img
           src={imageUrl || 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5'}
           alt={`Order ${id}`}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         
         <div className="absolute top-3 right-3">
           <span className={cn(
-            "text-xs font-medium py-1 px-2 rounded-full",
+            "text-xs font-medium py-1 px-2 rounded-full backdrop-blur-sm",
             statusConfig[status].color
           )}>
             {statusConfig[status].label}
@@ -80,8 +80,19 @@ export const OrderCard: React.FC<OrderCardProps> = ({
       </div>
       
       <div className="border-t p-3 flex gap-2">
-        <Button size="sm" variant="ghost" className="flex-1">Preview</Button>
-        <Button size="sm" className="flex-1">Review</Button>
+        <Button 
+          size="sm" 
+          variant="ghost" 
+          className="flex-1 rounded-xl hover:bg-muted"
+        >
+          Preview
+        </Button>
+        <Button 
+          size="sm" 
+          className="flex-1 rounded-xl bg-fluorescent-blue hover:bg-fluorescent-blue/90"
+        >
+          Review
+        </Button>
       </div>
     </div>
   );

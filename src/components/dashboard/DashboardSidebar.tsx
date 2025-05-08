@@ -20,36 +20,42 @@ interface SidebarItem {
   icon: React.ReactNode;
   label: string;
   href: string;
+  color?: string;
 }
 
 const mainItems: SidebarItem[] = [
   {
-    icon: <Home size={20} />,
+    icon: <Home size={18} />,
     label: 'Dashboard',
-    href: '/dashboard'
+    href: '/dashboard',
+    color: 'bg-fluorescent-blue/10 text-fluorescent-blue'
   },
   {
-    icon: <CheckSquare size={20} />,
+    icon: <CheckSquare size={18} />,
     label: 'Approvals',
-    href: '/dashboard/approvals'
+    href: '/dashboard/approvals',
+    color: 'bg-fluorescent-green/10 text-fluorescent-green'
   },
   {
-    icon: <Image size={20} />,
+    icon: <Image size={18} />,
     label: 'Proofs',
-    href: '/dashboard/proofs'
+    href: '/dashboard/proofs',
+    color: 'bg-fluorescent-purple/10 text-fluorescent-purple'
   },
   {
-    icon: <Clock size={20} />,
+    icon: <Clock size={18} />,
     label: 'Pending',
-    href: '/dashboard/pending'
+    href: '/dashboard/pending',
+    color: 'bg-fluorescent-orange/10 text-fluorescent-orange'
   },
   {
-    icon: <Package size={20} />,
+    icon: <Package size={18} />,
     label: 'Production',
-    href: '/dashboard/production'
+    href: '/dashboard/production',
+    color: 'bg-fluorescent-pink/10 text-fluorescent-pink'
   },
   {
-    icon: <Archive size={20} />,
+    icon: <Archive size={18} />,
     label: 'Archives',
     href: '/dashboard/archives'
   }
@@ -57,17 +63,17 @@ const mainItems: SidebarItem[] = [
 
 const secondaryItems: SidebarItem[] = [
   {
-    icon: <FileText size={20} />,
+    icon: <FileText size={18} />,
     label: 'Templates',
     href: '/dashboard/templates'
   },
   {
-    icon: <Users size={20} />,
+    icon: <Users size={18} />,
     label: 'Team',
     href: '/dashboard/team'
   },
   {
-    icon: <Settings size={20} />,
+    icon: <Settings size={18} />,
     label: 'Settings',
     href: '/dashboard/settings'
   }
@@ -91,13 +97,17 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
   return (
     <aside 
       className={cn(
-        "bg-card border-r h-screen sticky top-0 transition-all duration-300 flex flex-col",
+        "bg-card dark:bg-card/50 border-r backdrop-blur-sm h-screen sticky top-0 transition-all duration-300 flex flex-col",
         collapsed ? "w-20" : "w-64"
       )}
     >
       <div className="p-4 border-b flex items-center justify-between h-16">
         {!collapsed && <Logo size="sm" />}
-        {collapsed && <div className="w-8 h-8 rounded bg-primary flex items-center justify-center text-white font-bold mx-auto">SP</div>}
+        {collapsed && (
+          <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-primary-foreground font-bold mx-auto">
+            SP
+          </div>
+        )}
         
         <Button 
           variant="ghost" 
@@ -108,8 +118,8 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
           {collapsed ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -122,8 +132,8 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -137,54 +147,72 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
         </Button>
       </div>
       
-      <div className="flex-1 overflow-y-auto p-3 flex flex-col gap-2">
-        {mainItems.map((item, index) => (
-          <Link
-            key={index}
-            to={item.href}
-            className={cn(
-              "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium",
-              isActive(item.href)
-                ? "bg-primary/10 text-primary"
-                : "hover:bg-muted text-muted-foreground hover:text-foreground"
-            )}
-          >
-            {item.icon}
-            {!collapsed && <span>{item.label}</span>}
-          </Link>
-        ))}
-        
-        <div className="mt-6 pt-6 border-t">
-          {secondaryItems.map((item, index) => (
+      <div className="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-1">
+        {mainItems.map((item, index) => {
+          const active = isActive(item.href);
+          return (
             <Link
               key={index}
               to={item.href}
               className={cn(
-                "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium",
-                isActive(item.href)
+                "flex items-center gap-3 px-3 py-2 rounded-xl transition-all font-medium",
+                active
                   ? "bg-primary/10 text-primary"
-                  : "hover:bg-muted text-muted-foreground hover:text-foreground"
+                  : "hover:bg-muted/80 text-muted-foreground hover:text-foreground",
+                !collapsed && item.color && active && item.color
               )}
             >
-              {item.icon}
+              <div className={cn(
+                "flex items-center justify-center w-8 h-8 rounded-lg",
+                active ? "bg-primary/10" : "bg-transparent",
+                collapsed && item.color && active && item.color
+              )}>
+                {item.icon}
+              </div>
               {!collapsed && <span>{item.label}</span>}
             </Link>
-          ))}
+          );
+        })}
+        
+        <div className="mt-6 pt-6 border-t border-muted">
+          {secondaryItems.map((item, index) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={index}
+                to={item.href}
+                className={cn(
+                  "flex items-center gap-3 px-3 py-2 rounded-xl transition-all font-medium",
+                  active
+                    ? "bg-muted/80 text-primary"
+                    : "hover:bg-muted/80 text-muted-foreground hover:text-foreground"
+                )}
+              >
+                <div className={cn(
+                  "flex items-center justify-center w-8 h-8 rounded-lg",
+                  active ? "bg-muted/80" : "bg-transparent"
+                )}>
+                  {item.icon}
+                </div>
+                {!collapsed && <span>{item.label}</span>}
+              </Link>
+            );
+          })}
         </div>
       </div>
       
-      <div className="p-4 border-t">
+      <div className="p-4 border-t mt-auto">
         <div className={cn(
-          "flex items-center gap-3",
+          "flex items-center gap-3 rounded-xl p-2 bg-muted/50 hover:bg-muted/80 transition-colors",
           collapsed ? "justify-center" : ""
         )}>
-          <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground">
+          <div className="w-8 h-8 rounded-full bg-fluorescent-purple/20 flex items-center justify-center text-fluorescent-purple">
             JD
           </div>
           {!collapsed && (
-            <div>
-              <p className="font-medium">John Doe</p>
-              <p className="text-xs text-muted-foreground">john@example.com</p>
+            <div className="overflow-hidden">
+              <p className="font-medium truncate">John Doe</p>
+              <p className="text-xs text-muted-foreground truncate">john@example.com</p>
             </div>
           )}
         </div>

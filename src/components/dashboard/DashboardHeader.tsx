@@ -21,23 +21,24 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ title }) => {
             <input
               type="search"
               placeholder="Search..."
-              className="bg-muted pl-10 pr-4 py-2 rounded-lg text-sm w-64 focus:outline-none focus:ring-1 focus:ring-primary"
+              className="bg-muted/80 backdrop-blur-sm pl-10 pr-4 py-2 rounded-xl text-sm w-64 focus:outline-none focus:ring-1 focus:ring-primary focus:bg-muted"
             />
           </div>
           
-          <Button size="sm" variant="ghost" className="rounded-full">
-            <Bell size={20} />
+          <Button size="sm" variant="ghost" className="rounded-full relative hover:bg-muted/80">
+            <Bell size={18} />
+            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-fluorescent-pink animate-pulse"></span>
           </Button>
           
           <ThemeToggle />
           
-          <Button size="sm" className="gap-2 hidden md:flex">
-            <Plus size={18} />
+          <Button size="sm" className="gap-2 hidden md:flex bg-fluorescent-purple text-white hover:bg-fluorescent-purple/90 rounded-xl">
+            <Plus size={16} />
             <span>New Proof</span>
           </Button>
           
-          <Button size="icon" className="md:hidden">
-            <Plus size={18} />
+          <Button size="icon" className="md:hidden rounded-xl bg-fluorescent-purple text-white hover:bg-fluorescent-purple/90">
+            <Plus size={16} />
           </Button>
         </div>
       </div>

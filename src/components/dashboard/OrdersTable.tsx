@@ -59,9 +59,9 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders, onOrderClick }
                 className="border-b hover:bg-muted/50 transition-colors cursor-pointer"
                 onClick={() => onOrderClick(order.id)}
               >
-                <td className="p-4">#{order.id}</td>
+                <td className="p-4 font-mono text-sm">#{order.id}</td>
                 <td className="p-4 font-medium">{order.customerName}</td>
-                <td className="p-4 text-muted-foreground">{order.orderDate}</td>
+                <td className="p-4 text-muted-foreground text-sm">{order.orderDate}</td>
                 <td className="p-4">
                   <span className={cn(
                     "text-xs font-medium py-1 px-2 rounded-full",
@@ -70,12 +70,17 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders, onOrderClick }
                     {statusConfig[order.status].label}
                   </span>
                 </td>
-                <td className="p-4 text-muted-foreground">{order.dueDate || '—'}</td>
+                <td className="p-4 text-muted-foreground text-sm">{order.dueDate || '—'}</td>
                 <td className="p-4 text-right">
-                  <Button size="sm" onClick={(e) => {
-                    e.stopPropagation();
-                    onOrderClick(order.id);
-                  }}>
+                  <Button 
+                    size="sm"
+                    variant="outline" 
+                    className="rounded-xl border-fluorescent-blue/20 text-fluorescent-blue hover:bg-fluorescent-blue/10 hover:text-fluorescent-blue" 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onOrderClick(order.id);
+                    }}
+                  >
                     View
                   </Button>
                 </td>

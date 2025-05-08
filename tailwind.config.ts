@@ -66,12 +66,21 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				fluorescent: {
+					blue: '#33CCFF',
+					purple: '#9966FF', 
+					pink: '#FF66CC',
+					orange: '#FF9966',
+					green: '#66FF99'
 				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+				xl: '1.5rem',
+				'2xl': '2rem'
 			},
 			keyframes: {
 				"accordion-down": {
@@ -123,6 +132,16 @@ export default {
 				"slide-out-right": {
 					"0%": { transform: "translateX(0)" },
 					"100%": { transform: "translateX(100%)" }
+				},
+				"glow": {
+					"0%, 100%": { 
+						opacity: "0.8",
+						filter: "brightness(1)" 
+					},
+					"50%": { 
+						opacity: "1",
+						filter: "brightness(1.2)" 
+					}
 				}
 			},
 			animation: {
@@ -135,13 +154,19 @@ export default {
 				"slide-in-right": "slide-in-right 0.3s ease-out",
 				"slide-out-right": "slide-out-right 0.3s ease-out",
 				"enter": "fade-in 0.3s ease-out, scale-in 0.2s ease-out",
-				"exit": "fade-out 0.3s ease-out, scale-out 0.2s ease-out"
+				"exit": "fade-out 0.3s ease-out, scale-out 0.2s ease-out",
+				"glow": "glow 2s ease-in-out infinite"
 			},
 			boxShadow: {
 				'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
 				'glass-sm': '0 2px 8px 0 rgba(31, 38, 135, 0.05)',
 				'neumorphic': '8px 8px 16px #d9d9d9, -8px -8px 16px #ffffff',
 				'neumorphic-sm': '4px 4px 8px #d9d9d9, -4px -4px 8px #ffffff',
+				'neumorphic-dark': '8px 8px 16px #121212, -8px -8px 16px #262626',
+				'neumorphic-dark-sm': '4px 4px 8px #121212, -4px -4px 8px #262626',
+				'neon': '0 0 5px rgba(153, 102, 255, 0.5), 0 0 20px rgba(153, 102, 255, 0.3)',
+				'neon-blue': '0 0 5px rgba(51, 204, 255, 0.5), 0 0 20px rgba(51, 204, 255, 0.3)',
+				'neon-pink': '0 0 5px rgba(255, 102, 204, 0.5), 0 0 20px rgba(255, 102, 204, 0.3)',
 			},
 			backdropBlur: {
 				'glass': 'blur(10px)',

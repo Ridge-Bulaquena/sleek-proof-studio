@@ -29,13 +29,24 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="rounded-full hover:bg-muted"
+      className="rounded-full hover:bg-muted relative overflow-hidden group"
     >
-      {theme === "light" ? (
-        <Moon className="h-5 w-5 transition-all" />
-      ) : (
-        <Sun className="h-5 w-5 transition-all" />
-      )}
+      <span className="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-in-out z-10"
+        style={{
+          opacity: theme === "light" ? 1 : 0,
+          transform: theme === "light" ? "translateY(0)" : "translateY(-100%)",
+        }}
+      >
+        <Moon className="h-[1.2rem] w-[1.2rem]" />
+      </span>
+      <span className="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-in-out z-10"
+        style={{
+          opacity: theme === "dark" ? 1 : 0,
+          transform: theme === "dark" ? "translateY(0)" : "translateY(100%)",
+        }}
+      >
+        <Sun className="h-[1.2rem] w-[1.2rem]" />
+      </span>
       <span className="sr-only">Toggle theme</span>
     </Button>
   );

@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -43,11 +42,29 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
+    // Elastic animation handler
+    const btnRef = React.useRef<HTMLButtonElement>(null)
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      if (btnRef.current) {
+        btnRef.current.classList.remove("animate")
+        void btnRef.current.offsetWidth
+        btnRef.current.classList.add("animate")
+      }
+      if (props.onClick) props.onClick(e)
+    }
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
+        ref={(node: any) => {
+          if (typeof ref === "function") ref(node)
+          else if (ref) (ref as React.MutableRefObject<any>).current = node
+          if (!asChild) btnRef.current = node
+        }}
+        className={cn(
+          "button",
+          buttonVariants({ variant, size, className })
+        )}
         {...props}
+        onClick={handleClick}
       />
     )
   }

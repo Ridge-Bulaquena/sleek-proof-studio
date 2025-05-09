@@ -22,10 +22,10 @@ export const CTASection: React.FC = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="rounded-full text-lg px-8 font-sans" asChild>
+              <Button size="xl" className="button-xl tracking-widest" asChild>
                 <Link to="/signup">Start Free Trial</Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full text-lg px-8 font-sans" asChild>
+              <Button size="xl" variant="outline" className="button-xl tracking-widest" asChild>
                 <Link to="/demo">Schedule Demo</Link>
               </Button>
             </div>

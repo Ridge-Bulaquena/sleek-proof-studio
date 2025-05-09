@@ -22,10 +22,10 @@ export const HeroSection: React.FC = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="rounded-full text-lg px-8 font-sans" asChild>
+              <Button size="xl" className="button-xl" asChild>
                 <Link to="/signup">Get Started</Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full text-lg px-8 font-sans" asChild>
+              <Button size="xl" variant="outline" className="button-xl" asChild>
                 <Link to="/demo">See Demo</Link>
               </Button>
             </div>

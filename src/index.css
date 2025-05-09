@@ -164,7 +164,12 @@
     100% { transform: scale(1); }
   }
   
-  button:hover, a[role="button"]:hover {
+  button:hover {
     animation: elastic-bounce 0.6s ease-out;
+  }
+
+  /* Custom button styles for larger buttons */
+  .button-xl {
+    @apply py-5 px-10 text-xl font-bold tracking-widest;
   }
 }

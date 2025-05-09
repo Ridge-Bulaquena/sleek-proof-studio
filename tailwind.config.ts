@@ -73,6 +73,11 @@ export default {
 					pink: '#FF66CC',
 					orange: '#FF9966',
 					green: '#66FF99'
+				},
+				button: {
+					start: '#1e2d5a',
+					middle: '#374e96',
+					end: '#6e82c2'
 				}
 			},
 			borderRadius: {
@@ -80,7 +85,8 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)',
 				xl: '1.5rem',
-				'2xl': '2rem'
+				'2xl': '2rem',
+				full: '9999px',
 			},
 			keyframes: {
 				"accordion-down": {
@@ -142,6 +148,16 @@ export default {
 						opacity: "1",
 						filter: "brightness(1.2)" 
 					}
+				},
+				"elastic": {
+					"0%": { transform: "scale(1)" },
+					"30%": { transform: "scale(1.05)" },
+					"60%": { transform: "scale(0.98)" },
+					"100%": { transform: "scale(1)" }
+				},
+				"shine": {
+					"0%": { left: "-100%" },
+					"100%": { left: "150%" }
 				}
 			},
 			animation: {
@@ -155,7 +171,9 @@ export default {
 				"slide-out-right": "slide-out-right 0.3s ease-out",
 				"enter": "fade-in 0.3s ease-out, scale-in 0.2s ease-out",
 				"exit": "fade-out 0.3s ease-out, scale-out 0.2s ease-out",
-				"glow": "glow 2s ease-in-out infinite"
+				"glow": "glow 2s ease-in-out infinite",
+				"elastic": "elastic 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+				"shine": "shine 0.8s forwards"
 			},
 			boxShadow: {
 				'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
@@ -167,6 +185,7 @@ export default {
 				'neon': '0 0 5px rgba(153, 102, 255, 0.5), 0 0 20px rgba(153, 102, 255, 0.3)',
 				'neon-blue': '0 0 5px rgba(51, 204, 255, 0.5), 0 0 20px rgba(51, 204, 255, 0.3)',
 				'neon-pink': '0 0 5px rgba(255, 102, 204, 0.5), 0 0 20px rgba(255, 102, 204, 0.3)',
+				'button': '0 4px 15px rgba(30, 45, 90, 0.2)',
 			},
 			backdropBlur: {
 				'glass': 'blur(10px)',

@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -5,11 +6,11 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden group before:absolute before:inset-0 before:z-0 before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 hover:scale-[1.02] active:scale-[0.98] before:bg-gradient-to-r",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden group before:absolute before:inset-0 before:z-0 before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 hover:scale-[1.03] active:scale-[0.98]",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 before:from-primary/80 before:to-primary",
+        default: "bg-gradient-to-r from-[#1e2d5a] via-[#374e96] to-[#6e82c2] text-white shadow-md before:from-[#374e96]/90 before:to-[#6e82c2]/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90 before:from-destructive/80 before:to-destructive",
         outline:
@@ -21,8 +22,9 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        sm: "h-9 rounded-full px-3",
+        lg: "h-12 rounded-full px-8 text-base font-bold tracking-wider",
+        xl: "h-14 rounded-full px-10 text-lg font-bold tracking-widest",
         icon: "h-10 w-10",
       },
     },
@@ -52,6 +54,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       }
       if (props.onClick) props.onClick(e)
     }
+    
     return (
       <Comp
         ref={(node: any) => {
@@ -59,13 +62,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           else if (ref) (ref as React.MutableRefObject<any>).current = node
           if (!asChild) btnRef.current = node
         }}
-        className={cn(
-          "button",
-          buttonVariants({ variant, size, className })
-        )}
+        className={cn(buttonVariants({ variant, size, className }), "button")}
         {...props}
         onClick={handleClick}
-      />
+      >
+        <span className="relative z-10">{props.children}</span>
+        <span className="absolute top-[-50%] left-[-100%] w-[50%] h-[200%] bg-gradient-to-r from-transparent via-white/20 to-transparent transform rotate-[25deg] transition-all duration-800 group-hover:left-[150%]"></span>
+      </Comp>
     )
   }
 )
